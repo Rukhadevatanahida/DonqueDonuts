@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Donat Kukus Ceria</title>
+    <!-- Impor Google Fonts untuk Poppins dan Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome untuk ikon WhatsApp dan tombol zoom -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS Global */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            background-color: #fff0f5;
+            color: #333;
+        }
+
+        /* Navigasi Bar */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 10px 30px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            z-index: 100;
+            position: relative;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-logo img {
+            height: 70px;
+            width: 70px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+
+        .brand-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #462771;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #462771;
+            font-weight: bold;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #ff69b4;
+        }
+
+        .nav-menu a.active {
+            color: #ff69b4;
+        }
+
+        .nav-menu a.active::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #ff69b4;
+            bottom: -4px;
+            left: 0;
+        }
+        /* Header (Banner Utama) */
+        .main-header-banner img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            width: 100%;
+            height: auto;
+            background-image: url('coklattiramisu.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(70, 39, 113, 0.6);
+            z-index: 1;
+        }
+
+        .hero h1,
+        .hero p,
+        .hero a {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-hero {
+            display: inline-block;
+            background-color: #ffb6c1;
+            color: #462771;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn-hero:hover {
+            background-color: #ff8fab;
+            transform: translateY(-2px);
+        }
+
+        /* Produk Section */
+        .produk-section {
+            position: relative;
+            padding: 50px 20px;
+            background-color: #fbfbfb;
+            z-index: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .produk-section::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('Kucing Ceria dan Donat Menarik.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .produk-section h2 {
+            color: #462771;
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .subsection {
+            margin-bottom: 40px;
+        }
+
+        .subsection h3 {
+            color: #462771;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .subsection hr {
+            border: none;
+            height: 3px;
+            background-color: #462771;
+            width: 80px;
+            margin: 10px auto 30px auto;
+        }
+
+        .produk-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 20px;
+            max-width: 960px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .produk-card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 220px;
+            text-align: center;
+            padding: 20px;
+            flex: 0 0 auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative; /* Diperlukan untuk posisi tombol zoom */
+        }
+
+        .produk-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .produk-card-image-container {
+            position: relative;
+        }
+
+        .produk-card-image-container img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .btn-zoom {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #462771;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border: none;
+        }
+
+        .btn-zoom:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        .produk-card h3 {
+            margin: 10px 0 5px;
+            color: #555;
+            font-size: 1.1em;
+        }
+
+        .produk-card .product-description {
+            display: none;
+        }
+
+        .produk-card p {
+            color: #008080;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Tombol Pesan WhatsApp di kartu produk */
+        .produk-card .btn-whatsapp {
+            display: inline-block;
+            background-color: #25D366;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: background-color 0.3s, transform 0.2s;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .produk-card .btn-whatsapp:hover {
+            background-color: #1DA851;
+            transform: translateY(-1px);
+        }
+
+        .produk-card .btn-whatsapp i {
+            margin-right: 5px;
+        }
+
+        /* Modal Styles (untuk gambar yang diperbesar) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8); /* Background lebih gelap */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+            transform: translateY(-50px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            text-align: center; /* Konten di tengah */
+            border: 2px solid #ffb6c1;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .modal-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 2em;
+            cursor: pointer;
+            color: #555;
+            transition: color 0.2s;
+            line-height: 1; /* Menyesuaikan posisi X */
+        }
+
+        .modal-close-btn:hover {
+            color: #d63384;
+        }
+
+        .modal-image {
+            width: 100%; /* Gambar mengisi seluruh lebar modal */
+            height: auto; /* Mempertahankan rasio aspek */
+            max-height: 70vh; /* Maksimal 70% dari tinggi viewport */
+            object-fit: contain; /* Memastikan gambar tidak terpotong */
+            border-radius: 10px;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Menghapus gaya yang tidak digunakan di modal baru */
+        .modal-details { display: none; }
+        .modal-title { display: none; }
+        .modal-description { display: none; }
+        .modal-price { display: none; }
+        .btn-whatsapp-modal { display: none; }
+
+
+        /* Section Informasi Menu dan Harga */
+        .menu-info-section {
+            padding: 60px 20px;
+            background: linear-gradient(to right, #fff0f5, #fbeaff);
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .menu-info-section h2 {
+            color: #462771;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .menu-info-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .menu-column {
+            flex: 1;
+            min-width: 280px;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+
+        .menu-column h3 {
+            color: #d63384;
+            border-bottom: 2px solid #fdbb2d;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .menu-column ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 15px;
+        }
+
+        .menu-column ul li {
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 1.05em;
+        }
+
+        .menu-column p {
+            margin-top: 10px;
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+
+        .price-highlight {
+            font-weight: bold;
+            color: #462771;
+        }
+
+        .free-ongkir-alert {
+            margin-top: 20px;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            border: 1px solid #c3e6cb;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #462771;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            max-width: 1000px;
+            margin: auto;
+            gap: 30px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            text-align: left;
+        }
+
+        .footer-column p {
+            margin: 5px 0;
+            line-height: 1.6;
+        }
+
+        .footer-social {
+            text-align: right;
+        }
+
+        .footer-social p {
+            margin: 5px 0 10px;
+        }
+
+        .sosmed-icons {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .sosmed-item {
+            text-align: center;
+        }
+
+        .sosmed-item img {
+            width: 35px;
+            height: 35px;
+            transition: transform 0.2s ease;
+        }
+
+        .sosmed-item img:hover {
+            transform: scale(1.1);
+        }
+
+        .sosmed-item p {
+            margin: 2px 0;
+            font-size: 0.85em;
+            color: #ccc;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 900px) {
+            .produk-list, .menu-info-content, .footer-content {
+                gap: 20px;
+                max-width: 700px;
+            }
+            .produk-card {
+                width: 45%;
+            }
+            .menu-column {
+                min-width: 280px;
+            }
+            .footer-column, .footer-social {
+                text-align: center;
+            }
+            .sosmed-icons {
+                justify-content: center;
+            }
+            /* Modal Responsive */
+            .modal-content {
+                max-width: 600px;
+                padding: 25px;
+            }
+            .modal-image-wrapper {
+                padding-right: 0;
+            }
+            .modal-title, .modal-description, .modal-price {
+                text-align: center;
+            }
+            .modal-image {
+                max-height: 300px;
+                width: 80%;
+                margin: 0 auto 20px auto;
+            }
+            .btn-whatsapp {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-container {
+                flex-direction: column;
+                padding: 15px;
+            }
+            .nav-logo {
+                margin-bottom: 15px;
+            }
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .hero {
+                padding: 70px 15px;
+            }
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .produk-section h2, .menu-info-section h2 {
+                font-size: 1.8em;
+                margin-bottom: 30px;
+            }
+            .subsection h3 {
+                font-size: 1.5em;
+            }
+            .produk-list {
+                gap: 15px;
+            }
+            .produk-card {
+                width: 90%;
+                max-width: 300px;
+            }
+            .menu-column {
+                min-width: 90%;
+            }
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+            .modal-title {
+                font-size: 1.5em;
+            }
+            .modal-description {
+                font-size: 0.9em;
+            }
+            .modal-image {
+                max-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigasi Utama -->
+    <div class="nav-container">
+        <div class="nav-logo">
+            <img src="profil.jpg" alt="Logo Donque Donuts">
+            <span class="brand-name">Donque Donuts</span>
+        </div>
+        <nav class="nav-menu">
+            <!-- Kelas 'active' akan diatur oleh JavaScript -->
+            <a href="Donque Donuts.html">Home</a>
+            <a href="daftar produk.html">Daftar Produk</a>
+            <a href="profil.html">Profil</a>
+        </nav>
+    </div>
+
+    <!-- Header (Gambar Banner) -->
+    <header class="main-header-banner">
+        <img src="header.png" alt="Donque Donuts Banner" />
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Donque Donuts – Di Setiap Gigitan, Ada Cerita</h1>
+        <p>Donat kukus dan goreng yang lembut, hangat, dan menyatukan rasa.</p>
+        <a href="#produk" class="btn-hero">Lihat Produk Kami</a>
+    </section>
+
+    <!-- Produk Section -->
+    <section class="produk-section" id="produk">
+        <h2>Produk Kami</h2>
+
+        <!-- Donat Kukus -->
+        <div class="subsection">
+            <h3>🍩 Donat Kukus</h3>
+            <hr />
+            <div class="produk-list">
+                <div class="produk-card">
+                    <div class="produk-card-image-container">
+                        <img src="cokat_tiramisu_coklat.jpg" alt="Donat Cokelat Tiramisu isi 6" />
+                        <button class="btn-zoom"
+                           data-image="cokat_tiramisu_coklat.jpg"
+                           data-name="Donat Cokelat Tiramisu isi 6">
+                           <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                    <h3>Donat Cokelat Tiramisu isi 6</h3>
+                    <p>Rp 13.000</p>
+                    <a href="#" class="btn-whatsapp"
+                       data-whatsapp-message="Halo Donque Donuts, saya mau pesan Donat Cokelat Tiramisu isi 6 (Rp 13.000).">
+                       <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </a>
+                </div>
+                <div class="produk-card">
+                    <div class="produk-card-image-container">
+                        <img src="coklat.png" alt="Donat Cokelat isi 4" />
+                        <button class="btn-zoom"
+                           data-image="coklat.png"
+                           data-name="Donat Cokelat isi 4">
+                           <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                    <h3>Donat Cokelat isi 4</h3>
+                    <p>Rp 10.000</p>
+                    <a href="#" class="btn-whatsapp"
+                       data-whatsapp-message="Halo Donque Donuts, saya mau pesan Donat Cokelat isi 4 (Rp 10.000).">
+                       <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </a>
+                </div>
+                <div class="produk-card">
+                    <div class="produk-card-image-container">
+                        <img src="coklatmatchatiramisu.png" alt="Donat Cokelat Matcha Tiramisu isi 6" />
+                        <button class="btn-zoom"
+                           data-image="coklatmatchatiramisu.png"
+                           data-name="Donat Cokelat Matcha Tiramisu isi 6">
+                           <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                    <h3>Donat Cokelat Matcha Tiramisu isi 6</h3>
+                    <p>Rp 13.000</p>
+                    <a href="#" class="btn-whatsapp"
+                       data-whatsapp-message="Halo Donque Donuts, saya mau pesan Donat Cokelat Matcha Tiramisu isi 6 (Rp 13.000).">
+                       <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </a>
+                </div>
+                <div class="produk-card">
+                    <div class="produk-card-image-container">
+                        <img src="taro_tiramisu_cokalt.png" alt="Donat Cokelat Tiramisu Taro isi 6" />
+                        <button class="btn-zoom"
+                           data-image="taro_tiramisu_cokalt.png"
+                           data-name="Donat Cokelat Tiramisu Taro isi 6">
+                           <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                    <h3>Donat Cokelat Tiramisu Taro isi 6</h3>
+                    <p>Rp 13.000</p>
+                    <a href="#" class="btn-whatsapp"
+                       data-whatsapp-message="Halo Donque Donuts, saya mau pesan Donat Cokelat Tiramisu Taro isi 6 (Rp 13.000).">
+                       <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </a>
+                </div>
+                <div class="produk-card">
+                    <div class="produk-card-image-container">
+                        <img src="coklat_tiramisu.jpg" alt="Donat Cokelat Tiramisu isi 4" />
+                        <button class="btn-zoom"
+                           data-image="coklat_tiramisu.jpg"
+                           data-name="Donat Cokelat Tiramisu isi 4">
+                           <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                    <h3>Donat Cokelat Tiramisu isi 4</h3>
+                    <p>Rp 10.000</p>
+                    <a href="#" class="btn-whatsapp"
+                       data-whatsapp-message="Halo Donque Donuts, saya mau pesan Donat Cokelat Tiramisu isi 4 (Rp 10.000).">
+                       <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </a>
+                </div>
+                <div class="produk-card">
+                    <div class="produk-card-image-container">
+                        <img src="coklat_taro_.jpg" alt="Donat Coklat Taro isi 4" />
+                        <button class="btn-zoom"
+                           data-image="coklat_taro_.jpg"
+                           data-name="Donat Coklat Taro isi 4">
+                           <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                    <h3>Donat Coklat Taro isi 4</h3>
+                    <p>Rp 5.000</p>
+                    <a href="#" class="btn-whatsapp"
+                       data-whatsapp-message="Halo Donque Donuts, saya mau pesan Donat Coklat Taro isi 4 (Rp 5.000).">
+                       <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </a>
+                </div>
+                <div class="produk-card">
+                    <div class="produk-card-image-container">
+                        <img src="coklat_tiramisu_taro.jpg" alt="Donat Coklat Tiramisu Taro isi 6" />
+                        <button class="btn-zoom"
+                           data-image="coklat_tiramisu_taro.jpg"
+                           data-name="Donat Coklat Tiramisu Taro isi 6">
+                           <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                    <h3>Donat Coklat Tiramisu Taro isi 6</h3>
+                    <p>Rp 13.000</p>
+                    <a href="#" class="btn-whatsapp"
+                       data-whatsapp-message="Halo Donque Donuts, saya mau pesan Donat Coklat Tiramisu Taro isi 6 (Rp 13.000).">
+                       <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Donat Goreng -->
+        <div class="subsection">
+            <h3>🍩 Donat Goreng</h3>
+            <hr />
+            <div class="produk-list">
+                <div class="produk-card">
+                    <div class="produk-card-image-container">
+                        <img src="donat goreng coklat tabur .png" alt="Donat Milo Bubuk" />
+                        <button class="btn-zoom"
+                           data-image="donat goreng coklat tabur .png"
+                           data-name="Donat Milo Bubuk isi 3">
+                           <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                    <h3>Donat Milo Bubuk isi 3</h3>
+                    <p>Rp 10.000</p>
+                    <a href="#" class="btn-whatsapp"
+                       data-whatsapp-message="Halo Donque Donuts, saya mau pesan Donat Milo Bubuk isi 3 (Rp 10.000).">
+                       <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </a>
+                </div>
+                <div class="produk-card">
+                    <div class="produk-card-image-container">
+                        <img src="donat goreng lumer coklat.png" alt="Donat Gula Halus" />
+                        <button class="btn-zoom"
+                           data-image="donat goreng lumer coklat.png"
+                           data-name="Donat Cokelat Lumer isi 3">
+                           <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                    <h3>Donat Cokelat Lumer isi 3</h3>
+                    <p>Rp 10.000</p>
+                    <a href="#" class="btn-whatsapp"
+                       data-whatsapp-message="Halo Donque Donuts, saya mau pesan Donat Cokelat Lumer isi 3 (Rp 10.000).">
+                       <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </a>
+                </div>
+                 <div class="produk-card">
+                    <div class="produk-card-image-container">
+                        <img src="donat goreng coklat toping keju.png" alt="Donat Coklat Keju" />
+                        <button class="btn-zoom"
+                           data-image="donat goreng coklat toping keju.png"
+                           data-name="Donat Cokelat Keju isi 3">
+                           <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                    <h3>Donat Cokelat Keju isi 3</h3>
+                    <p>Rp 10.000</p>
+                    <a href="#" class="btn-whatsapp"
+                       data-whatsapp-message="Halo Donque Donuts, saya mau pesan Donat Cokelat Keju isi 3 (Rp 10.000).">
+                       <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </a>
+                </div>
+                <div class="produk-card">
+                    <div class="produk-card-image-container">
+                        <img src="donat goreng lumer strawberry.png" alt="Donat Strawberry Lumer" />
+                        <button class="btn-zoom"
+                           data-image="donat goreng lumer strawberry.png"
+                           data-name="Donat Strawberry Lumer isi 3">
+                           <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                    <h3>Donat Strawberry Lumer isi 3</h3>
+                    <p>Rp 10.000</p>
+                    <a href="#" class="btn-whatsapp"
+                       data-whatsapp-message="Halo Donque Donuts, saya mau pesan Donat Strawberry Lumer isi 3 (Rp 10.000).">
+                       <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </a>
+                </div>
+                <div class="produk-card">
+                    <div class="produk-card-image-container">
+                        <img src="donat goreng lumer tiramisu toping warna warni.png" alt="Donat Tiramisu Sprinkle" />
+                        <button class="btn-zoom"
+                           data-image="donat goreng lumer tiramisu toping warna warni.png"
+                           data-name="Donat Tiramisu Sprinkle isi 3">
+                           <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                    <h3>Donat Tiramisu Sprinkle isi 3</h3>
+                    <p>Rp 10.000</p>
+                    <a href="#" class="btn-whatsapp"
+                       data-whatsapp-message="Halo Donque Donuts, saya mau pesan Donat Tiramisu Sprinkle isi 3 (Rp 10.000).">
+                       <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </a>
+                </div>
+                <div class="produk-card">
+                    <div class="produk-card-image-container">
+                        <img src="donat goreng lumer tiramisu.png" alt="Donat Tiramisu Lumer" />
+                        <button class="btn-zoom"
+                           data-image="donat goreng lumer tiramisu.png"
+                           data-name="Donat Tiramisu Lumer isi 3">
+                           <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                    <h3>Donat Tiramisu Lumer isi 3</h3>
+                    <p>Rp 10.000</p>
+                    <a href="#" class="btn-whatsapp"
+                       data-whatsapp-message="Halo Donque Donuts, saya mau pesan Donat Tiramisu Lumer isi 3 (Rp 10.000).">
+                       <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </a>
+                </div>
+                <div class="produk-card">
+                    <div class="produk-card-image-container">
+                        <img src="donat goreng tabur coklat.png" alt="Donat Cokelat Bubuk" />
+                        <button class="btn-zoom"
+                           data-image="donat goreng tabur coklat.png"
+                           data-name="Donat Cokelat Bubuk isi 3">
+                           <i class="fas fa-search-plus"></i>
+                        </button>
+                    </div>
+                    <h3>Donat Cokelat Bubuk isi 3</h3>
+                    <p>Rp 10.000</p>
+                    <a href="#" class="btn-whatsapp"
+                       data-whatsapp-message="Halo Donque Donuts, saya mau pesan Donat Cokelat Bubuk isi 3 (Rp 10.000).">
+                       <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informasi Menu dan Harga -->
+    <section class="menu-info-section">
+        <h2>Daftar Menu Donat Kukus & Goreng</h2>
+        <div class="menu-info-content">
+
+            <!-- Donat Kukus Column -->
+            <div class="menu-column">
+                <h3>🍩 Donat Kukus (Topping Lumer)</h3>
+                <ul>
+                    <li>Coklat</li>
+                    <li>Tiramisu</li>
+                    <li>Matcha</li>
+                    <li>Taro</li>
+                    <li>Strawberry</li>
+                </ul>
+                <p>
+                    *Topping lumer langsung disiram di atas donat.
+                </p>
+            </div>
+
+            <!-- Donat Goreng Column -->
+            <div class="menu-column">
+                <h3>🍩 Donat Goreng (Lumer & Bubuk)</h3>
+                <ul>
+                    <li>Lumer: Coklat, Tiramisu</li>
+                    <li>Bubuk: Gula halus, Milo, Coklat bubuk, Matcha bubuk</li>
+                </ul>
+                <p>
+                    *Topping bubuk ditabur, tidak meleleh.
+                </p>
+            </div>
+
+            <!-- Harga & Info Column -->
+            <div class="menu-column">
+                <h3>💸 Harga & Info</h3>
+                <ul>
+                    <li><strong class="price-highlight">Donat Kukus</strong> Isi 6: Rp 13.000</li>
+                    <li><strong class="price-highlight">Donat Kukus</strong> Isi 4: Rp 10.000</li>
+                    <li><strong class="price-highlight">Donat Kukus</strong> Isi 2: Rp 5.000</li>
+                    <li><strong class="price-highlight">Donat Goreng</strong> Isi 3: Rp 10.000</li>
+                </ul>
+                <p style="margin: 10px 0 5px;">🎉 Free Topping:</p>
+                <ul>
+                    <li>Keju, Chocochip, Oreo, Kacang, Mises / Ceres, Sprinkle, Chocochips Rainbow</li>
+                </ul>
+                <p class="free-ongkir-alert">
+                    ✅ Free Ongkir area Purworejo Kota
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <!-- Kolom Kiri Footer (Alamat & Jam Operasional) -->
+            <div class="footer-column">
+                <p>📍 JL. Mayjen Sutoyo, Suronegaran, Purworejo</p>
+                <p>🕙 Buka: Setiap Hari, mulai pukul 10.00 WIB sampai habis</p>
+            </div>
+
+            <!-- Kolom Kanan Footer (Sosial Media) -->
+            <div class="footer-column footer-social">
+                <p>Ikuti Kami:</p>
+                <div class="sosmed-icons">
+                    <!-- Instagram -->
+                    <div class="sosmed-item">
+                        <a href="https://www.instagram.com/donque.donutspwr/" target="_blank">
+                            <img src="instagram.png" alt="Instagram">
+                        </a>
+                        <p>@donque.donuts</p>
+                    </div>
+                    <!-- TikTok -->
+                    <div class="sosmed-item">
+                        <a href="https://www.tiktok.com/@donque.donuts" target="_blank">
+                            <img src="tik-tok.png" alt="TikTok">
+                        </a>
+                        <p>@mas bagas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-info">
+            &copy; 2025 Donque Donuts. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Modal untuk menampilkan gambar yang diperbesar -->
+    <div id="imageModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <img id="modalFullImage" class="modal-image" src="" alt="Product Image">
+        </div>
+    </div>
+    
+    <!-- Modal untuk detail produk (tetap ada tapi tidak terlihat) -->
+    <div id="productDetailModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-btn">&times;</button>
+            <div class="modal-image-wrapper">
+                <img id="modalProductImage" class="modal-image" src="" alt="Product Image">
+            </div>
+            <div class="modal-details">
+                <h3 id="modalProductName" class="modal-title"></h3>
+                <p id="modalProductDescription" class="modal-description"></p>
+                <p id="modalProductPrice" class="modal-price"></p>
+                <a id="modalWhatsappButton" href="#" target="_blank" class="btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Pesan Sekarang!
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all buttons
+            const zoomButtons = document.querySelectorAll('.btn-zoom');
+            const whatsappButtons = document.querySelectorAll('.btn-whatsapp');
+            
+            // Get modal elements for image zoom
+            const imageModalOverlay = document.getElementById('imageModal');
+            const modalFullImage = document.getElementById('modalFullImage');
+            const imageModalCloseBtn = imageModalOverlay.querySelector('.modal-close-btn');
+
+            // WhatsApp number (replace with your actual number)
+            const whatsappNumber = '6281234567890';
+
+            // Function to open the image modal
+            function openImageModal(imageSrc) {
+                modalFullImage.src = imageSrc;
+                imageModalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Function to close the image modal
+            function closeImageModal() {
+                imageModalOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            // Add click event listener to each zoom button
+            zoomButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const image = this.dataset.image;
+                    openImageModal(image);
+                });
+            });
+
+            // Add click event listener to close image modal button
+            imageModalCloseBtn.addEventListener('click', closeImageModal);
+
+            // Close image modal when clicking outside
+            imageModalOverlay.addEventListener('click', function(event) {
+                if (event.target === imageModalOverlay) {
+                    closeImageModal();
+                }
+            });
+
+            // Close image modal with Escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && imageModalOverlay.classList.contains('active')) {
+                    closeImageModal();
+                }
+            });
+
+            // Add click event listener to each WhatsApp button
+            whatsappButtons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const whatsappMessage = this.dataset.whatsappMessage;
+                    const encodedMessage = encodeURIComponent(whatsappMessage);
+                    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+                });
+            });
+
+            // Script untuk navigasi aktif
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            const currentPath = window.location.pathname.split('/').pop();
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const linkPath = link.getAttribute('href').split('/').pop();
+
+                if (currentPath === linkPath || (currentPath === '' && linkPath === 'Donque Donuts.html')) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
