@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Profil - Donque Donuts</title>
+    <!-- Impor Google Fonts untuk Poppins dan Playfair Display -->
+    <link rel="icon" type="image/png" href="profil.jpg" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Global */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff0f5; /* Warna latar belakang konsisten */
+            color: #333;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        /* Navigasi Bar (Konsisten dengan halaman lain) */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 30px;
+            background-color: #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-logo img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+
+        .brand-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #462771; /* Warna brand name konsisten */
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-menu a {
+            font-weight: bold;
+            color: #462771; /* Warna default tautan navbar konsisten */
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #ff69b4; /* Warna hover konsisten */
+        }
+
+        .nav-menu a.active {
+            color: #ff69b4; /* Warna aktif konsisten */
+        }
+
+        .nav-menu a.active::after {
+            content: "";
+            position: absolute;
+            height: 2px; /* Tebal garis bawah konsisten */
+            width: 100%;
+            background-color: #ff69b4; /* Warna garis bawah konsisten */
+            bottom: -4px; /* Posisi garis bawah konsisten */
+            left: 0;
+            border-radius: 1px; /* Sedikit membulat */
+        }
+
+        /* Hero Section (Diadaptasi dari halaman Home) */
+        .hero {
+            width: 100%;
+            height: auto;
+            background-image: url('coklattiramisu.png'); /* Gambar latar belakang hero */
+            background-size: cover;
+            background-position: center;
+            color: white; /* Warna teks putih */
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(70, 39, 113, 0.6); /* Overlay ungu dengan transparansi */
+            z-index: 1;
+        }
+
+        .hero h1,
+        .hero p,
+        .hero a {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* CTA Button (konsisten dengan halaman Home) */
+        .btn-cta {
+            display: inline-block;
+            background-color: #ffb6c1; /* Warna tombol CTA */
+            color: #462771; /* Warna teks tombol CTA */
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn-cta:hover {
+            background-color: #ff8fab;
+            transform: translateY(-2px);
+        }
+
+        /* Section Umum */
+        .section {
+            max-width: 1000px; /* Lebar maksimum section konsisten */
+            margin: 60px auto; /* Margin atas/bawah yang konsisten */
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .section h2 {
+            color: #462771;
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif; /* Font judul section konsisten */
+        }
+
+        /* Profil Section Styling */
+        .profil-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            align-items: flex-start; /* Mengatur aligment di awal */
+            background: #fff; /* Latar belakang putih */
+            padding: 40px; /* Padding lebih besar */
+            border-radius: 16px; /* Sudut membulat */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Bayangan lebih menonjol */
+        }
+
+        .profil-photo {
+            flex: 1 1 280px; /* Lebar dasar lebih besar untuk foto */
+            text-align: center;
+            padding: 15px; /* Padding di sekitar foto */
+        }
+
+        .profil-photo img {
+            width: 100%;
+            max-width: 300px; /* Maksimal lebar foto */
+            height: auto; /* Agar tidak terdistorsi */
+            border-radius: 15px; /* Sudut membulat pada foto */
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15); /* Bayangan pada foto */
+            transition: transform 0.3s ease;
+        }
+
+        .profil-photo img:hover {
+            transform: scale(1.02); /* Sedikit zoom saat hover */
+        }
+
+        .profil-photo p {
+            font-size: 0.9em;
+            color: #777;
+            margin-top: 10px;
+        }
+
+        .profil-info {
+            flex: 2 1 400px; /* Informasi lebih lebar dari foto */
+            text-align: left; /* Teks informasi rata kiri */
+            padding: 15px; /* Padding di sekitar info */
+        }
+
+        .profil-info h3 {
+            color: #462771; /* Warna judul info konsisten */
+            margin-top: 0; /* Hapus margin top default */
+            margin-bottom: 8px;
+            font-size: 1.3em; /* Ukuran font lebih besar */
+            border-bottom: 1px solid #eee; /* Garis bawah tipis */
+            padding-bottom: 5px;
+        }
+
+        .profil-info p, .profil-info ul {
+            font-size: 1.05em; /* Ukuran font sedikit lebih besar */
+            margin-bottom: 15px; /* Spasi antar paragraf/list item */
+            color: #555;
+        }
+
+        .profil-info ul {
+            list-style: none; /* Hapus bullet default */
+            padding-left: 0;
+        }
+
+        .profil-info ul li {
+            margin-bottom: 8px;
+        }
+
+        .profil-info a {
+            color: #ff69b4; /* Warna tautan di info konsisten */
+            font-weight: bold; /* Teks tautan lebih tebal */
+            transition: color 0.3s ease;
+        }
+
+        .profil-info a:hover {
+            color: #e04b9e; /* Warna hover tautan konsisten */
+        }
+
+        /* Lokasi Usaha Section (Diintegrasikan dan disempurnakan) */
+        .location-section {
+            background-color: #fbfbfb; /* Warna latar belakang konsisten */
+            padding: 40px 20px;
+            margin: 60px auto;
+            max-width: 1000px;
+            border-radius: 16px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .location-section h3 {
+            color: #462771;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .location-section img {
+            max-width: 600px; /* Mengurangi lebar maksimal gambar lokasi */
+            width: 90%; /* Menggunakan persentase untuk responsif */
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .location-section img:hover {
+            transform: scale(1.01);
+        }
+
+
+        /* Footer (Konsisten dengan halaman lain) */
+        footer {
+            background-color: #462771; /* Warna footer konsisten */
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            max-width: 1000px;
+            margin: auto;
+            gap: 30px;
+        }
+
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+            text-align: left;
+        }
+
+        .footer-column p {
+            margin: 5px 0;
+            line-height: 1.6;
+        }
+
+        .footer-social {
+            text-align: right;
+        }
+
+        .footer-social p {
+            margin: 5px 0 10px;
+        }
+
+        .sosmed-icons {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .sosmed-item {
+            text-align: center;
+        }
+
+        .sosmed-item img {
+            width: 35px;
+            height: 35px;
+            transition: transform 0.2s ease;
+        }
+
+        .sosmed-item img:hover {
+            transform: scale(1.1);
+        }
+
+        .sosmed-item p {
+            margin: 2px 0;
+            font-size: 0.85em;
+            color: #ccc;
+        }
+
+        .footer-info {
+            text-align: center;
+            font-size: 0.8em;
+            color: #ccc;
+            margin-top: 20px;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 900px) {
+            .nav-container {
+                padding: 10px 20px;
+            }
+            .nav-logo img {
+                width: 60px;
+                height: 60px;
+            }
+            .brand-name {
+                font-size: 1.2em;
+            }
+            .nav-menu {
+                gap: 20px;
+            }
+            .hero {
+                padding: 80px 15px;
+            }
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+            .section {
+                margin: 40px auto;
+            }
+            .section h2 {
+                font-size: 1.8em;
+                margin-bottom: 30px;
+            }
+            .profil-container {
+                padding: 30px;
+            }
+            .profil-photo {
+                flex-basis: 100%; /* Foto di atas di mobile */
+                max-width: 250px; /* Batasi lebar foto di mobile */
+                margin: 0 auto; /* Tengah foto */
+            }
+            .profil-info {
+                flex-basis: 100%; /* Info mengambil seluruh lebar di mobile */
+                text-align: center; /* Teks info rata tengah di mobile */
+            }
+            .profil-info ul {
+                padding-left: 0;
+            }
+            .profil-info ul li {
+                text-align: center; /* List item rata tengah di mobile */
+            }
+            .footer-content {
+                gap: 20px;
+                flex-direction: column; /* Kolom footer bertumpuk di mobile */
+                align-items: center; /* Tengahkan item footer */
+            }
+            .footer-column {
+                text-align: center;
+            }
+            .sosmed-icons {
+                justify-content: center; /* Tengahkan ikon sosial media di mobile */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .nav-container {
+                flex-direction: column;
+                padding: 15px;
+            }
+            .nav-logo {
+                margin-bottom: 15px;
+            }
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            .hero {
+                padding: 60px 15px;
+            }
+            .hero h1 {
+                font-size: 1.8em;
+            }
+            .hero p {
+                font-size: 0.9em;
+            }
+            .section h2 {
+                font-size: 1.6em;
+            }
+            .profil-container {
+                padding: 20px;
+            }
+            .profil-info h3 {
+                font-size: 1.1em;
+            }
+            .profil-info p, .profil-info ul {
+                font-size: 0.95em;
+            }
+            .location-section {
+                padding: 30px 15px;
+            }
+            .location-section h3 {
+                font-size: 1.5em;
+            }
+            /* Menyesuaikan gambar lokasi agar tidak terlalu besar di mobile */
+            .location-section img {
+                max-width: 100%; /* Tetap 100% dari container-nya */
+                width: 90%; /* Mengurangi lebar efektif */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigasi -->
+    <div class="nav-container">
+        <div class="nav-logo">
+            <img src="profil.jpg" alt="Logo Donque Donuts">
+            <span class="brand-name">Donque Donuts</span>
+        </div>
+        <nav class="nav-menu">
+            <!-- Kelas 'active' akan diatur oleh JavaScript -->
+            <a href="Donque Donuts.html">Home</a>
+            <a href="daftar produk.html">Daftar Produk</a>
+            <a href="profil.html">Profil</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section (Diadaptasi dari halaman Home) -->
+    <section class="hero">
+        <h1>Tentang Donque Donuts</h1>
+        <p>Kenali lebih dekat perjalanan kami menghadirkan kebahagiaan di setiap donat.</p>
+        <!-- Tombol CTA opsional, bisa diarahkan ke bagian profil bawah atau halaman lain -->
+        <a href="#profil-detail" class="btn-cta">Baca Selengkapnya</a>
+    </section>
+
+    <!-- Profil UMKM (Konten Utama Profil) -->
+    <section class="section" id="profil-detail">
+        <h2>Profil Lengkap Kami</h2>
+        <div class="profil-container">
+            <div class="profil-photo">
+                <img src="gambar kerja praktik.png" alt="Foto Pemilik Donque Donuts">
+                <p><em>Pemilik dan Founder Donque Donuts</em></p>
+            </div>
+            <div class="profil-info">
+                <h3>Nama UMKM</h3>
+                <p><strong>Donque Donuts</strong></p>
+
+                <h3>Deskripsi Singkat</h3>
+                <p>
+                    Donque Donuts adalah sebuah Usaha Mikro, Kecil, dan Menengah (UMKM) yang berdedikasi di bidang kuliner, berlokasi di Purworejo. Kami fokus menyajikan berbagai varian donat kukus dan donat goreng yang istimewa, dibuat dengan resep otentik untuk menghasilkan tekstur yang sangat lembut dan rasa khas yang bikin nagih. Sejak didirikan pada tahun 2023, kami selalu berkomitmen untuk menggunakan bahan-bahan alami terbaik tanpa pengawet, demi menjamin kualitas dan keamanan produk kami.
+                </p>
+
+                <h3>Visi Kami</h3>
+                <p>
+                    Menjadi UMKM donat kukus dan goreng terkemuka di Purworejo yang dikenal akan inovasi rasa, kualitas premium, dan pelayanan prima, serta menjadi bagian dari kebahagiaan setiap keluarga.
+                </p>
+
+                <h3>Misi Kami</h3>
+                <ul>
+                    <li>Menyajikan donat dengan kualitas rasa dan tekstur terbaik.</li>
+                    <li>Mengembangkan varian rasa donat yang unik dan mengikuti selera pasar.</li>
+                    <li>Menjaga kebersihan dan keamanan produk dalam setiap proses produksi.</li>
+                    <li>Memberikan pelayanan yang ramah dan responsif kepada pelanggan.</li>
+                    <li>Berperan aktif dalam pengembangan ekonomi lokal melalui UMKM.</li>
+                </ul>
+
+                <h3>Informasi Kontak & Pesanan</h3>
+                <ul>
+                    <li>WhatsApp: <a href="https://wa.me/6285799452120" target="_blank">0857-9945-2120</a></li>
+                    
+                    <li>Instagram: <a href="https://instagram.com/donque.donutspwr" target="_blank">@donque.donutspwr</a></li>
+                    <li>TikTok: <a href="https://tiktok.com/@donque.donuts" target="_blank">@donque.donuts</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Lokasi Usaha (Diberi section terpisah untuk kejelasan dan styling) -->
+    <section class="location-section">
+        <h3>Kunjungi Lokasi Kami</h3>
+        <p style="margin-bottom: 20px; color: #555;">Kami siap melayani setiap hari!</p>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d894.4881662467436!2d110.01295056953687!3d-7.7081977705324105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwNDInMjkuNSJTIDExMMKwMDAnNDguOSJF!5e1!3m2!1sid!2sid!4v1753502743660!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <p style="font-size: 0.9em; color: #777; margin-top: 15px;">JL. Mayjen Sutoyo, Suronegaran, Purworejo</p>
+    </section>
+
+    <!-- Footer (Konsisten dengan halaman lain) -->
+    <footer>
+        <div class="footer-content">
+            <!-- Kolom Kiri Footer (Alamat & Jam Operasional) -->
+            <div class="footer-column">
+                <p>📍 JL. Mayjen Sutoyo, Suronegaran, Purworejo</p>
+                <p>🕙 Buka: Setiap Hari, mulai pukul 10.00 WIB sampai habis</p>
+            </div>
+
+            <!-- Kolom Kanan Footer (Sosial Media) -->
+            <div class="footer-column footer-social">
+                <p>Ikuti Kami:</p>
+                <div class="sosmed-icons">
+                    <!-- Instagram -->
+                    <div class="sosmed-item">
+                        <a href="https://www.instagram.com/donque.donutspwr/" target="_blank">
+                            <img src="instagram.png" alt="Instagram">
+                        </a>
+                        <p>@donque.donuts</p>
+                    </div>
+                    <!-- TikTok -->
+                    <div class="sosmed-item">
+                        <a href="https://www.tiktok.com/@donque.donuts" target="_blank">
+                            <img src="tik-tok.png" alt="TikTok">
+                        </a>
+                        <p>@mas bagas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-info">
+            &copy; 2025 Donque Donuts. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
