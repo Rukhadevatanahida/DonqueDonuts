@@ -262,19 +262,32 @@
             font-family: 'Playfair Display', serif;
         }
 
-        .location-section img {
-            max-width: 600px; /* Mengurangi lebar maksimal gambar lokasi */
-            width: 90%; /* Menggunakan persentase untuk responsif */
-            height: auto;
+        /* Container untuk membuat peta responsif */
+        .map-container {
+            position: relative;
+            width: 100%;
+            /* Rasio aspek 4:3 (450/600 * 100 = 75%) */
+            padding-bottom: 75%;
+            height: 0;
+            overflow: hidden;
             border-radius: 15px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
         }
 
-        .location-section img:hover {
-            transform: scale(1.01);
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
         }
 
+        .location-section p {
+            font-size: 0.9em;
+            color: #777;
+            margin-top: 15px;
+        }
 
         /* Footer (Konsisten dengan halaman lain) */
         footer {
@@ -383,30 +396,33 @@
                 padding: 30px;
             }
             .profil-photo {
-                flex-basis: 100%; /* Foto di atas di mobile */
-                max-width: 250px; /* Batasi lebar foto di mobile */
-                margin: 0 auto; /* Tengah foto */
+                flex-basis: 100%;
+                max-width: 250px;
+                margin: 0 auto;
             }
             .profil-info {
-                flex-basis: 100%; /* Info mengambil seluruh lebar di mobile */
-                text-align: center; /* Teks info rata tengah di mobile */
+                flex-basis: 100%;
+                text-align: center;
             }
             .profil-info ul {
                 padding-left: 0;
             }
             .profil-info ul li {
-                text-align: center; /* List item rata tengah di mobile */
+                text-align: center;
             }
             .footer-content {
                 gap: 20px;
-                flex-direction: column; /* Kolom footer bertumpuk di mobile */
-                align-items: center; /* Tengahkan item footer */
+                flex-direction: column;
+                align-items: center;
             }
             .footer-column {
                 text-align: center;
             }
             .sosmed-icons {
-                justify-content: center; /* Tengahkan ikon sosial media di mobile */
+                justify-content: center;
+            }
+            .location-section iframe {
+                max-width: 100%; /* Peta akan mengisi lebar penuh kontainer di mobile */
             }
         }
 
@@ -449,11 +465,6 @@
             }
             .location-section h3 {
                 font-size: 1.5em;
-            }
-            /* Menyesuaikan gambar lokasi agar tidak terlalu besar di mobile */
-            .location-section img {
-                max-width: 100%; /* Tetap 100% dari container-nya */
-                width: 90%; /* Mengurangi lebar efektif */
             }
         }
     </style>
@@ -528,7 +539,9 @@
     <section class="location-section">
         <h3>Kunjungi Lokasi Kami</h3>
         <p style="margin-bottom: 20px; color: #555;">Kami siap melayani setiap hari!</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d894.4881662467436!2d110.01295056953687!3d-7.7081977705324105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwNDInMjkuNSJTIDExMMKwMDAnNDguOSJF!5e1!3m2!1sid!2sid!4v1753502743660!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d894.4881662467436!2d110.01295056953687!3d-7.7081977705324105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zN8KwNDInMjkuNSJTIDExMMKwMDAnNDguOSJF!5e1!3m2!1sid!2sid!4v1753502743660!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
         <p style="font-size: 0.9em; color: #777; margin-top: 15px;">JL. Mayjen Sutoyo, Suronegaran, Purworejo</p>
     </section>
 
@@ -566,5 +579,26 @@
             &copy; 2025 Donque Donuts. All rights reserved.
         </div>
     </footer>
+
+    <!-- SCRIPT INI PENTING DAN HARUS ADA DI SETIAP HALAMAN DENGAN NAVIGASI YANG SAMA -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            // Dapatkan nama file HTML saat ini dari URL (misal: "profil.html")
+            const currentPath = window.location.pathname.split('/').pop();
+
+            navLinks.forEach(link => {
+                link.classList.remove('active'); // Hapus kelas 'active' dari semua tautan
+
+                const linkPath = link.getAttribute('href').split('/').pop();
+
+                // Periksa apakah tautan ini sesuai dengan halaman yang sedang dibuka
+                // Penanganan khusus untuk "Home" jika URL kosong (misal: diakses tanpa nama file)
+                if (currentPath === linkPath || (currentPath === '' && linkPath === 'Donque Donuts.html')) {
+                    link.classList.add('active'); // Tambahkan kelas 'active' jika cocok
+                }
+            });
+        });
+    </script>
 </body>
 </html>
